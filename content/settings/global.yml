@@ -1,8 +1,7 @@
-siteTitle: Netlify CMS + React Starter
-siteUrl: 'https://netlify-cms-react-starter.netlify.com'
+siteTitle: Gatsbro
+siteUrl: 'https://gatsbro.netlify.com'
 siteDescription: >-
-  A starter project for creating lightning-fast, offline-first websites with
-  Netlify CMS and React.
+  A starter project for creating lightning-fast websites with Gatsby Netlify CMS.
 socialMediaCard:
   image: /images/uploads/card-og.png
 headerScripts: |-

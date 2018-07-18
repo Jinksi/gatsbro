@@ -1,3 +1,7 @@
+## 1.0.0 - 2018-07-18
+
+- Gatsbro init
+
 ## 0.4.2 - 2018-06-08
 
 - Meta object field should not be required

@@ -1,8 +1,7 @@
 # Gatsbro
 
-[![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg?style=flat-square)](http://standardjs.com/)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![dependencies](https://david-dm.org/jinksi/netlify-cms-react-starter.svg?style=flat-square)](https://david-dm.org/jinksi/netlify-cms-react-starter)
+[![dependencies](https://david-dm.org/jinksi/netlify-cms-react-starter.svg?style=flat-square)](https://david-dm.org/jinksi/gatsbro)
 
 An opinionated starter project for creating lightning-fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
@@ -17,7 +16,7 @@ An opinionated starter project for creating lightning-fast websites with [Gatsby
 
 ## Get going
 
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jinksi/netlify-cms-react-starter&stack=cms)
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Jinksi/gatsbro&stack=cms)
 
 1.  Hit the **Deploy to Netlify** button. This will:
 

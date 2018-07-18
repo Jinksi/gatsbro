@@ -27,7 +27,7 @@ export default ({ children, data }) => {
         }
       />
 
-      <GithubCorner url="https://github.com/Jinksi/netlify-cms-react-starter" />
+      <GithubCorner url="https://github.com/Jinksi/gatsbro" />
 
       <Nav />
 
