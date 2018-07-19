@@ -1,6 +1,5 @@
 import React from 'react'
 import CMS from 'netlify-cms'
-import './admin.css'
 
 import { HomePageTemplate } from '../templates/HomePage'
 import { AboutPageTemplate } from '../templates/AboutPage'
@@ -30,17 +29,25 @@ CMS.registerPreviewTemplate('posts', ({ entry }) => (
   <SinglePostTemplate {...entry.toJS().data} />
 ))
 
-if (process.env.NETLIFY_SITE_URL && typeof window !== 'undefined') {
-  window.localStorage.setItem('netlifySiteURL', process.env.NETLIFY_SITE_URL)
-}
+if (typeof window !== 'undefined') {
+  // add admin.css
+  const link = document.createElement('link')
+  link.type = 'text/css'
+  link.rel = 'stylesheet'
+  link.href = '/admin/admin.css'
+  document.head.appendChild(link)
 
-// Log netlifySiteURL if editing on localhost
-if (
-  window.location.hostname === 'localhost' &&
-  window.localStorage.getItem('netlifySiteURL')
-) {
-  console.log(
-    `%cnetlifySiteURL: ${window.localStorage.getItem('netlifySiteURL')}`,
-    'color: hotpink; font-size: 15px'
-  )
+  if (process.env.NETLIFY_SITE_URL) {
+    window.localStorage.setItem('netlifySiteURL', process.env.NETLIFY_SITE_URL)
+  }
+  // Log netlifySiteURL if editing on localhost
+  if (
+    window.location.hostname === 'localhost' &&
+    window.localStorage.getItem('netlifySiteURL')
+  ) {
+    console.log(
+      `%cnetlifySiteURL: ${window.localStorage.getItem('netlifySiteURL')}`,
+      'color: hotpink; font-size: 15px'
+    )
+  }
 }
