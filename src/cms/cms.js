@@ -50,4 +50,11 @@ if (typeof window !== 'undefined') {
       'color: hotpink; font-size: 15px'
     )
   }
+
+  // check for netlifyIdentity, redirect to admin if user is logging in
+  if (window.localStorage && window.netlifyIdentity) {
+    netlifyIdentity.on('login', function() {
+      document.location.reload()
+    })
+  }
 }
