@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import _get from 'lodash/get'
 import _format from 'date-fns/format'
 import Link from 'gatsby-link'
@@ -22,6 +23,10 @@ export const SinglePostTemplate = ({
     itemScope
     itemType="http://schema.org/BlogPosting"
   >
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+
     {featuredImage && (
       <Image
         background

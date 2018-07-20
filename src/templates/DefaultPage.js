@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import PageHeader from '../components/PageHeader'
 import Content from '../components/Content'
@@ -11,6 +12,10 @@ export const DefaultPageTemplate = ({
   body
 }) => (
   <main className="DefaultPage">
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+
     <PageHeader
       title={title}
       subtitle={subtitle}

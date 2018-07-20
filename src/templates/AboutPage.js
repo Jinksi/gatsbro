@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import PageHeader from '../components/PageHeader'
 import Image from '../components/Image'
@@ -16,6 +17,9 @@ export const AboutPageTemplate = ({
   body
 }) => (
   <main className="About">
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
     <PageHeader
       title={title}
       subtitle={subtitle}

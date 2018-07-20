@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 
 import PageHeader from '../components/PageHeader'
 import PostSection from '../components/PostSection'
@@ -13,6 +14,10 @@ export const BlogIndexTemplate = ({
   postCategories = []
 }) => (
   <main className="Blog">
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+
     <PageHeader
       large
       title={title}

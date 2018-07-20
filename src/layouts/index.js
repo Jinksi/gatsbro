@@ -14,7 +14,7 @@ export default ({ children, data }) => {
     data.settingsYaml || {}
   return (
     <Fragment>
-      <Helmet defaultTitle={siteTitle} titleTemplate={`${siteTitle} | %s`}>
+      <Helmet defaultTitle={siteTitle} titleTemplate={`%s | ${siteTitle}`}>
         {/* Add font link tags here */}
       </Helmet>
 

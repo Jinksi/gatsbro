@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from 'react-helmet'
 import { MapPin, Smartphone, Mail } from 'react-feather'
 
 import PageHeader from '../components/PageHeader'
@@ -17,6 +18,10 @@ export const ContactPageTemplate = ({
   email
 }) => (
   <main className="Contact">
+    <Helmet>
+      <title>{title}</title>
+    </Helmet>
+
     <PageHeader
       title={title}
       subtitle={subtitle}
