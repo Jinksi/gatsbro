@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import BackgroundImage from './BackgroundImage'
+import Image from './Image'
 import Content from './Content'
 import './PageHeader.css'
 
@@ -16,7 +16,7 @@ const PageHeader = ({
   return (
     <div className={`PageHeader relative ${className}`}>
       {backgroundImage && (
-        <BackgroundImage src={backgroundImage} alt={title} size="cover" />
+        <Image background src={backgroundImage} alt={title} size="cover" />
       )}
       <div className="container relative">
         <h1 className="PageHeader--Title">{title}</h1>

@@ -1,13 +1,26 @@
 import React from 'react'
 import GatsbyImage from 'gatsby-image'
 import PropTypes from 'prop-types'
+import _get from 'lodash/get'
 
-import { extractChildImageSharp } from '../utils'
 import './Image.css'
+
+const extractChildImageSharp = (src = '', format) => {
+  if (!format) {
+    if (typeof src === 'string' && !format) return src
+    const childImageSharp = _get(src, 'childImageSharp')
+    if (!childImageSharp) return _get(src, 'publicURL')
+  }
+  if (format === 'sizes' || format === 'resolutions')
+    return _get(src, `childImageSharp.${format}`)
+  return src
+}
 
 class Image extends React.Component {
   render() {
     let {
+      background,
+      backgroundSize = 'cover',
       className = '',
       src,
       srcSet,
@@ -22,6 +35,33 @@ class Image extends React.Component {
     const imageSizes = extractChildImageSharp(src, 'sizes')
     const resolutions = extractChildImageSharp(src, 'resolutions')
     const imageSrc = extractChildImageSharp(src || source)
+
+    if (background) {
+      let style = {}
+
+      if (typeof imageSrc === 'string') {
+        style = { backgroundImage: `url(${imageSrc})`, backgroundSize }
+      }
+
+      return (
+        <div className={`BackgroundImage absolute ${className}`} style={style}>
+          {!style.backgroundImage && (
+            <Image
+              src={imageSrc}
+              alt={alt}
+              style={{
+                position: 'absolute',
+                width: 'auto',
+                height: 'auto'
+              }}
+              imgStyle={{
+                objectFit: backgroundSize
+              }}
+            />
+          )}
+        </div>
+      )
+    }
 
     if (imageSizes || resolutions) {
       return (
@@ -61,6 +101,22 @@ export const query = graphql`
     childImageSharp {
       sizes(quality: 75) {
         ...GatsbyImageSharpSizes_withWebp
+      }
+    }
+  }
+  fragment NoBlurImage on File {
+    publicURL
+    childImageSharp {
+      sizes(quality: 75) {
+        ...GatsbyImageSharpSizes_withWebp_noBase64
+      }
+    }
+  }
+  fragment TracedImage on File {
+    publicURL
+    childImageSharp {
+      sizes(quality: 75) {
+        ...GatsbyImageSharpSizes_withWebp_tracedSVG
       }
     }
   }

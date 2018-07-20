@@ -5,7 +5,7 @@ import Link from 'gatsby-link'
 import { ChevronLeft } from 'react-feather'
 
 import Content from '../components/Content'
-import BackgroundImage from '../components/BackgroundImage'
+import Image from '../components/Image'
 import './SinglePost.css'
 
 export const SinglePostTemplate = ({
@@ -23,7 +23,8 @@ export const SinglePostTemplate = ({
     itemType="http://schema.org/BlogPosting"
   >
     {featuredImage && (
-      <BackgroundImage
+      <Image
+        background
         className="SinglePost--BackgroundImage"
         src={featuredImage}
       />
