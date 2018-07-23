@@ -1,6 +1,5 @@
 :root {
-  --primary: #0984d2;
-  --primary-light: #6fadff;
+  --primary: rebeccapurple;
   --secondary: #212121;
   --lightGrey: whitesmoke;
   --midGrey: #cacaca;
@@ -182,7 +181,7 @@ blockquote {
 }
 .Button:hover,
 .Button:focus {
-  background: var(--primary-light);
+  opacity: 0.95;
   outline: none;
 }
 .Button[disabled] {
