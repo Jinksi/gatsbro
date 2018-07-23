@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './EnquiryForm.css'
+import './Form.css'
 
 export default ({
   name = 'Simple Form',
@@ -8,33 +8,33 @@ export default ({
   action = ''
 }) => (
   <form
-    className='EnquiryForm'
+    className='Form'
     name={name}
     action={action}
     data-netlify=''
     data-netlify-honeypot='_gotcha'
   >
-    <label className='EnquiryForm--Label'>
+    <label className='Form--Label'>
       <input
-        className='EnquiryForm--Input'
+        className='Form--Input'
         type='text'
         placeholder='Name'
         name='name'
         required
       />
     </label>
-    <label className='EnquiryForm--Label'>
+    <label className='Form--Label'>
       <input
-        className='EnquiryForm--Input'
+        className='Form--Input'
         type='email'
         placeholder='Email'
         name='email'
         required
       />
     </label>
-    <label className='EnquiryForm--Label has-arrow'>
+    <label className='Form--Label has-arrow'>
       <select
-        className='EnquiryForm--Input EnquiryForm--Select'
+        className='Form--Input Form--Select'
         name='type'
         defaultValue='Type of Enquiry'
         required
@@ -47,9 +47,9 @@ export default ({
         <option>Want to say hello</option>
       </select>
     </label>
-    <label className='EnquiryForm--Label'>
+    <label className='Form--Label'>
       <textarea
-        className='EnquiryForm--Input EnquiryForm--Textarea'
+        className='Form--Input Form--Textarea'
         placeholder='Message'
         name='message'
         rows='10'
@@ -60,7 +60,7 @@ export default ({
     {!!subject && <input type='hidden' name='subject' value={subject} />}
     <input type='hidden' name='form-name' value={name} />
     <input
-      className='Button EnquiryForm--SubmitButton'
+      className='Button Form--SubmitButton'
       type='submit'
       value='Enquire'
     />

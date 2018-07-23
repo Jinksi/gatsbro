@@ -3,7 +3,7 @@ import Helmet from 'react-helmet'
 import { MapPin, Smartphone, Mail } from 'react-feather'
 
 import PageHeader from '../components/PageHeader'
-import EnquiryFormSimpleAjax from '../components/EnquiryFormSimpleAjax'
+import FormSimpleAjax from '../components/FormSimpleAjax'
 import Content from '../components/Content'
 import './ContactPage.css'
 
@@ -60,7 +60,7 @@ export const ContactPageTemplate = ({
         </div>
 
         <div>
-          <EnquiryFormSimpleAjax name="Simple Form Ajax" />
+          <FormSimpleAjax name="Simple Form Ajax" />
         </div>
       </div>
     </section>

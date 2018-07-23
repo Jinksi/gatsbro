@@ -1,4 +1,4 @@
-.EnquiryForm {
+.Form {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -7,11 +7,11 @@
   margin: 2.5rem 0;
 }
 
-.EnquiryForm > * + * {
+.Form > * + * {
   margin-top: 2rem;
 }
 
-.EnquiryForm--Label {
+.Form--Label {
   width: 100%;
   display: flex;
   align-items: center;
@@ -19,7 +19,7 @@
   position: relative;
 }
 
-.EnquiryForm--Input {
+.Form--Input {
   font-family: inherit;
   flex-grow: 1;
   box-sizing: border-box;
@@ -33,12 +33,12 @@
   resize: none;
 }
 
-.EnquiryForm--Select {
+.Form--Select {
   background: none;
   appearance: none;
 }
 
-.EnquiryForm--Label.has-arrow:after {
+.Form--Label.has-arrow:after {
   content: '';
   position: absolute;
   right: 2.5rem;
@@ -51,29 +51,38 @@
   pointer-events: none;
 }
 
-.EnquiryForm--Input:-webkit-autofill {
+.Form--Input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0 1000px white inset !important;
 }
 
-.EnquiryForm--Input:focus {
+.Form--Input:focus {
   outline: none;
   border-color: black;
 }
 
-.EnquiryForm--Input[disabled],
-.EnquiryForm--SubmitButton[disabled] {
+.Form--Input:focus {
+  outline: none;
+  border-color: black;
+}
+
+.Form--Input[disabled],
+.Form--SubmitButton[disabled] {
   opacity: 0.4;
   pointer-events: none;
   cursor: progress;
 }
 
-.EnquiryForm--Input::placeholder {
+.Form--Input::placeholder {
   text-transform: none;
 }
 
-.EnquiryForm--Alert {
+.Form--Alert {
   background: var(--lightGrey);
   width: 100%;
   text-align: center;
   padding: 2rem;
+}
+
+.Form--Input-honey {
+  display: none;
 }

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { stringify } from 'qs'
 
-import './EnquiryForm.css'
-import './EnquiryFormControlled.css'
+import './Form.css'
+import './FormControlled.css'
 
 const fetch = window.fetch
 
@@ -98,7 +98,7 @@ class Form extends Component {
   render () {
     return (
       <form
-        className='EnquiryForm EnquiryForm-controlled'
+        className='Form Form-controlled'
         name={this.state['form-name']}
         ref={form => {
           this.form = form
@@ -109,11 +109,11 @@ class Form extends Component {
         data-netlify-honeypot='_gotcha'
       >
         {this.state.alert && (
-          <div className='EnquiryForm--Alert'>{this.state.alert}</div>
+          <div className='Form--Alert'>{this.state.alert}</div>
         )}
-        <label className='EnquiryForm--Label'>
+        <label className='Form--Label'>
           <input
-            className='EnquiryForm--Input'
+            className='Form--Input'
             value={this.state.name}
             onChange={this.handleChange}
             type='text'
@@ -124,9 +124,9 @@ class Form extends Component {
           />
           <LineGroup />
         </label>
-        <label className='EnquiryForm--Label'>
+        <label className='Form--Label'>
           <input
-            className='EnquiryForm--Input'
+            className='Form--Input'
             value={this.state.email}
             onChange={this.handleChange}
             type='email'
@@ -137,9 +137,9 @@ class Form extends Component {
           />
           <LineGroup />
         </label>
-        <label className='EnquiryForm--Label'>
+        <label className='Form--Label'>
           <textarea
-            className='EnquiryForm--Input EnquiryForm--Textarea'
+            className='Form--Input Form--Textarea'
             value={this.state.message}
             onChange={this.handleChange}
             placeholder='Message'
@@ -151,7 +151,7 @@ class Form extends Component {
           <LineGroup />
         </label>
         <input
-          className='EnquiryForm--Input'
+          className='Form--Input'
           type='text'
           name='_gotcha'
           style={{ display: 'none' }}
@@ -159,19 +159,19 @@ class Form extends Component {
           onChange={this.handleChange}
         />
         <input
-          className='EnquiryForm--Input'
+          className='Form--Input'
           type='hidden'
           name='subject'
           value={this.state.subject}
         />
         <input
-          className='EnquiryForm--Input'
+          className='Form--Input'
           type='hidden'
           name='form-name'
           value={this.state['form-name']}
         />
         <button
-          className='Button EnquiryForm--SubmitButton'
+          className='Button Form--SubmitButton'
           type='submit'
           value='Send'
           disabled={this.state.disabled ? 'disabled' : ''}
@@ -185,7 +185,7 @@ class Form extends Component {
 
 const LineGroup = () => (
   <svg
-    className='EnquiryForm--Line'
+    className='Form--Line'
     viewBox='0 0 40 2'
     preserveAspectRatio='none'
   >

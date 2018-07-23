@@ -2,13 +2,14 @@ import React from 'react'
 import { stringify } from 'qs'
 import { serialize } from 'dom-form-serializer'
 
-import './EnquiryForm.css'
+import './Form.css'
 
 class Form extends React.Component {
   static defaultProps = {
     name: 'Simple Form Ajax',
     subject: '', // optional subject of the notification email
     action: '',
+    honeypot: 'email',
     successMessage: 'Thanks for your enquiry, we will get back to you soon',
     errorMessage:
       'There is a problem, your message has not been sent, please try contacting us via email'
@@ -53,41 +54,41 @@ class Form extends React.Component {
   }
 
   render() {
-    const { name, subject, action } = this.props
+    const { name, subject, action, honeypot } = this.props
 
     return (
       <form
-        className="EnquiryForm"
+        className="Form"
         name={name}
         action={action}
         onSubmit={this.handleSubmit}
         data-netlify=""
-        data-netlify-honeypot="_gotcha"
+        data-netlify-honeypot={honeypot}
       >
         {this.state.alert && (
-          <div className="EnquiryForm--Alert">{this.state.alert}</div>
+          <div className="Form--Alert">{this.state.alert}</div>
         )}
-        <label className="EnquiryForm--Label">
+        <label className="Form--Label">
           <input
-            className="EnquiryForm--Input"
+            className="Form--Input"
             type="text"
             placeholder="Name"
             name="name"
             required
           />
         </label>
-        <label className="EnquiryForm--Label">
+        <label className="Form--Label">
           <input
-            className="EnquiryForm--Input"
+            className="Form--Input"
             type="email"
             placeholder="Email"
-            name="email"
+            name="emailAddress"
             required
           />
         </label>
-        <label className="EnquiryForm--Label has-arrow">
+        <label className="Form--Label has-arrow">
           <select
-            className="EnquiryForm--Input EnquiryForm--Select"
+            className="Form--Input Form--Select"
             name="type"
             defaultValue="Type of Enquiry"
             required
@@ -100,20 +101,25 @@ class Form extends React.Component {
             <option>Want to say hello</option>
           </select>
         </label>
-        <label className="EnquiryForm--Label">
+        <label className="Form--Label">
           <textarea
-            className="EnquiryForm--Input EnquiryForm--Textarea"
+            className="Form--Input Form--Textarea"
             placeholder="Message"
             name="message"
             rows="10"
             required
           />
         </label>
-        <input type="text" name="_gotcha" style={{ display: 'none' }} />
+        <input
+          type="text"
+          name={honeypot}
+          className="Form--Input-honey"
+          placeholder="Leave blank if you are a human"
+        />
         {!!subject && <input type="hidden" name="subject" value={subject} />}
         <input type="hidden" name="form-name" value={name} />
         <input
-          className="Button EnquiryForm--SubmitButton"
+          className="Button Form--SubmitButton"
           type="submit"
           value="Enquire"
           disabled={this.state.disabled}
