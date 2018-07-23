@@ -99,7 +99,7 @@ export const query = graphql`
   fragment FluidImage on File {
     publicURL
     childImageSharp {
-      sizes(quality: 75) {
+      sizes(maxWidth: 2800, quality: 75) {
         ...GatsbyImageSharpSizes_withWebp
       }
     }
@@ -107,7 +107,7 @@ export const query = graphql`
   fragment NoBlurImage on File {
     publicURL
     childImageSharp {
-      sizes(quality: 75) {
+      sizes(maxWidth: 2800, quality: 75) {
         ...GatsbyImageSharpSizes_withWebp_noBase64
       }
     }
@@ -115,7 +115,7 @@ export const query = graphql`
   fragment TracedImage on File {
     publicURL
     childImageSharp {
-      sizes(quality: 75) {
+      sizes(maxWidth: 2800, quality: 75) {
         ...GatsbyImageSharpSizes_withWebp_tracedSVG
       }
     }
