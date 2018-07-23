@@ -1,5 +1,4 @@
 import React from 'react'
-import _sortBy from 'lodash/sortBy'
 
 import PostCard from '../components/PostCard'
 import './PostSection.css'
@@ -28,10 +27,7 @@ class PostSection extends React.Component {
     const { posts, title, showLoadMore, loadMoreTitle } = this.props
     const { limit } = this.state
 
-    const visiblePosts = _sortBy(posts, ['date'])
-      .reverse()
-      // show all unlesss you set a limit.
-      .slice(0, limit || posts.length)
+    const visiblePosts = posts.slice(0, limit || posts.length)
 
     return (
       <div className="PostSection">

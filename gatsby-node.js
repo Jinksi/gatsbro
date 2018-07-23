@@ -46,8 +46,10 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
       pagesToCreate.forEach((page, index) => {
         const id = page.node.id
         const previous =
-          index === mdFiles.length - 1 ? null : mdFiles[index + 1].node
-        const next = index === 0 ? null : mdFiles[index - 1].node
+          index === pagesToCreate.length - 1
+            ? null
+            : pagesToCreate[index + 1].node
+        const next = index === 0 ? null : pagesToCreate[index - 1].node
 
         createPage({
           // page slug set in md frontmatter
@@ -89,7 +91,9 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     ) {
       slug = `/`
     } else if (_.get(node, 'frontmatter.title')) {
-      slug = `/${parsedFilePath.dir}/${_.kebabCase(node.frontmatter.title)}/`
+      slug = `/${_.kebabCase(parsedFilePath.dir)}/${_.kebabCase(
+        node.frontmatter.title
+      )}/`
     } else if (parsedFilePath.dir === '') {
       slug = `/${parsedFilePath.name}/`
     } else {

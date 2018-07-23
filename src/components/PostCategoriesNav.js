@@ -11,9 +11,10 @@ const PostCategoriesNav = ({ categories }) => (
       </Link>
       {categories.map((category, index) => (
         <Link
+          exact
           className="NavLink"
           key={category.title + index}
-          to={`/blog/category/${category.title}/`}
+          to={category.slug}
         >
           {category.title}
         </Link>

@@ -11,45 +11,55 @@ export const BlogIndexTemplate = ({
   subtitle,
   featuredImage,
   posts = [],
-  postCategories = []
-}) => (
-  <main className="Blog">
-    <Helmet>
-      <title>{title}</title>
-    </Helmet>
+  postCategories = [],
+  contentType
+}) => {
+  const isCategory = contentType === 'postCategories'
+  const byCategory = post =>
+    post.categories &&
+    post.categories.filter(cat => cat.category === title).length
+  const filteredPosts = isCategory ? posts.filter(byCategory) : posts
 
-    <PageHeader
-      large
-      title={title}
-      subtitle={subtitle}
-      backgroundImage={featuredImage}
-    />
-
-    {!!postCategories.length && (
-      <PostCategoriesNav categories={postCategories} />
-    )}
-
-    {!!posts.length && <PostSection posts={posts} />}
-  </main>
-)
-
-// Export Default BlogIndex for front-end
-const BlogIndex = ({ data }) => {
-  const { page, posts } = data
   return (
-    <BlogIndexTemplate
-      title={page.frontmatter.title}
-      subtitle={page.frontmatter.subtitle}
-      featuredImage={page.frontmatter.featuredImage}
-      // pull frontmatter to root of post
-      posts={posts.edges.map(post => ({
-        ...post.node,
-        ...post.node.frontmatter,
-        ...post.node.fields
-      }))}
-    />
+    <main className="Blog">
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
+
+      <PageHeader
+        large
+        title={title}
+        subtitle={subtitle}
+        backgroundImage={featuredImage}
+      />
+
+      {!!postCategories.length && (
+        <PostCategoriesNav categories={postCategories} />
+      )}
+
+      {!!posts.length && <PostSection posts={filteredPosts} />}
+    </main>
   )
 }
+
+// Export Default BlogIndex for front-end
+const BlogIndex = ({ data: { page, posts, postCategories } }) => (
+  <BlogIndexTemplate
+    {...page}
+    {...page.fields}
+    {...page.frontmatter}
+    posts={posts.edges.map(post => ({
+      ...post.node,
+      ...post.node.frontmatter,
+      ...post.node.fields
+    }))}
+    postCategories={postCategories.edges.map(post => ({
+      ...post.node,
+      ...post.node.frontmatter,
+      ...post.node.fields
+    }))}
+  />
+)
 
 export default BlogIndex
 
@@ -60,6 +70,9 @@ export const pageQuery = graphql`
   ## query name must be unique to this file
   query BlogIndex($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
+      fields {
+        contentType
+      }
       frontmatter {
         title
         template
@@ -88,6 +101,21 @@ export const pageQuery = graphql`
             featuredImage {
               ...SmallImage
             }
+          }
+        }
+      }
+    }
+    postCategories: allMarkdownRemark(
+      filter: { fields: { contentType: { eq: "postCategories" } } }
+      sort: { order: ASC, fields: [frontmatter___title] }
+    ) {
+      edges {
+        node {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
           }
         }
       }

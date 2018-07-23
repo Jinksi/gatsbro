@@ -172,16 +172,19 @@ collections: # A list of collections the CMS should be able to edit
     slug: "{{slug}}"
     create: true # Allow users to create new documents in this collection
     fields: # The fields each document in this collection have
+      - {label: Template, name: template, widget: hidden, default: BlogIndex}
       - {label: Title, name: title, widget: string}
-      - label: "Meta"
-        required: false
-        name: "meta"
-        widget: "object"
-        fields:
-          - {label: Title, name: title, widget: string, required: false}
-          - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
-          - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
-          - {label: Noindex, name: noindex, widget: boolean, required: false}
+      - {label: Subtitle, name: subtitle, widget: string, required: false}
+      - {label: Featured Image, name: featuredImage, widget: image, required: false}
+      # - label: "Meta"
+      #   required: false
+      #   name: "meta"
+      #   widget: "object"
+      #   fields:
+      #     - {label: Title, name: title, widget: string, required: false}
+      #     - {label: Description, name: description, widget: text, required: false, pattern: [".{,300}", "Must not exceed 300 characters"]}
+      #     - {label: Canonical Link, name: canonicalLink, widget: string, required: false}
+      #     - {label: Noindex, name: noindex, widget: boolean, required: false}
 
 
   - name: "settings"
