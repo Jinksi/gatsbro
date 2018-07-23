@@ -1,7 +1,5 @@
 ---
 title: Updates
-meta:
-  description: Desc
-  title: Test Updates Title
+featuredImage: /images/uploads/nitish-meena-37745.jpg
 ---
 
