@@ -32,6 +32,7 @@ export const SinglePostTemplate = ({
         background
         className="SinglePost--BackgroundImage"
         src={featuredImage}
+        alt={title}
       />
     )}
 
