@@ -27,7 +27,6 @@ export const BlogIndexTemplate = ({
       </Helmet>
 
       <PageHeader
-        large
         title={title}
         subtitle={subtitle}
         backgroundImage={featuredImage}
