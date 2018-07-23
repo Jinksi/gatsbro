@@ -5,6 +5,8 @@ status: Published
 date: '2018-07-18'
 featuredImage: /images/uploads/nitish-meena-37745.jpg
 excerpt: This is the excerpt
+categories:
+  - category: Updates
 ---
 This is placeholder text that our web designers put here to make sure words appear properly on your website. This text is going to be replaced once the website is completed. 
 
