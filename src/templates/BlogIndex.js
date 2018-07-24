@@ -33,26 +33,36 @@ export const BlogIndexTemplate = ({
       />
 
       {!!postCategories.length && (
-        <PostCategoriesNav categories={postCategories} />
+        <section className="section thin">
+          <div className="container">
+            <PostCategoriesNav categories={postCategories} />
+          </div>
+        </section>
       )}
 
-      {!!posts.length && <PostSection posts={filteredPosts} />}
+      {!!posts.length && (
+        <section className="section">
+          <div className="container">
+            <PostSection posts={filteredPosts} />
+          </div>
+        </section>
+      )}
     </main>
   )
 }
 
 // Export Default BlogIndex for front-end
-const BlogIndex = ({ data: { page, posts, postCategories } }) => (
+const BlogIndex = ({ data }) => (
   <BlogIndexTemplate
-    {...page}
-    {...page.fields}
-    {...page.frontmatter}
-    posts={posts.edges.map(post => ({
+    {...data.page}
+    {...data.page.fields}
+    {...data.page.frontmatter}
+    posts={data.posts.edges.map(post => ({
       ...post.node,
       ...post.node.frontmatter,
       ...post.node.fields
     }))}
-    postCategories={postCategories.edges.map(post => ({
+    postCategories={data.postCategories.edges.map(post => ({
       ...post.node,
       ...post.node.frontmatter,
       ...post.node.fields

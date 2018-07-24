@@ -17,11 +17,10 @@ class PostSection extends React.Component {
     limit: this.props.limit
   }
 
-  increaseLimit = () => {
+  increaseLimit = () =>
     this.setState(prevState => ({
       limit: prevState.limit + this.props.perPageLimit
     }))
-  }
 
   render() {
     const { posts, title, showLoadMore, loadMoreTitle } = this.props
@@ -31,24 +30,22 @@ class PostSection extends React.Component {
 
     return (
       <div className="PostSection">
-        <div className="container">
-          {title && <h2 className="PostSection--Title">{title}</h2>}
-          {!!visiblePosts.length && (
-            <div className="PostSection--Grid">
-              {visiblePosts.map((post, index) => (
-                <PostCard key={post.title + index} {...post} />
-              ))}
+        {title && <h2 className="PostSection--Title">{title}</h2>}
+        {!!visiblePosts.length && (
+          <div className="PostSection--Grid">
+            {visiblePosts.map((post, index) => (
+              <PostCard key={post.title + index} {...post} />
+            ))}
+          </div>
+        )}
+        {showLoadMore &&
+          visiblePosts.length < posts.length && (
+            <div className="taCenter">
+              <button className="button" onClick={this.increaseLimit}>
+                {loadMoreTitle}
+              </button>
             </div>
           )}
-          {showLoadMore &&
-            visiblePosts.length < posts.length && (
-              <div className="taCenter">
-                <button className="button" onClick={this.increaseLimit}>
-                  {loadMoreTitle}
-                </button>
-              </div>
-            )}
-        </div>
       </div>
     )
   }

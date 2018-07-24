@@ -1,16 +1,16 @@
 .PostSection {
-  padding: 2rem 0;
-}
-.PostSection .PostCard {
-  width: calc(33.33% - 4rem);
 }
 
 .PostSection--Grid {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   align-items: stretch;
+}
+
+.PostSection--Grid > * {
+  width: calc(33.33% - 2rem);
+  margin-bottom: 4rem;
 }
 
 @supports (display: grid) {
@@ -20,9 +20,9 @@
     grid-gap: 4rem;
   }
 
-  .PostSection .PostCard {
+  .PostSection--Grid > * {
     width: auto;
-    margin: 0 0 4rem 0;
+    margin: 0;
   }
 }
 
@@ -33,10 +33,11 @@
   line-height: 1.2;
 }
 
-@media screen and (max-width: 750px) {
-  .PostSection .PostCard {
+@media screen and (max-width: 888px) {
+  .PostSection--Grid > * {
     width: 100%;
-    margin: 0 0 4rem 0;
+    max-width: 50rem;
+    margin: 0 auto 4rem;
     display: block;
   }
 
@@ -45,10 +46,6 @@
       display: block;
       grid-template-columns: 1;
       grid-gap: 0;
-    }
-
-    .PostSection .PostCard {
-      margin: 0 0 4rem 0;
     }
   }
 }

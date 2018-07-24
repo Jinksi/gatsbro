@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import _get from 'lodash/get'
 import _format from 'date-fns/format'
@@ -42,12 +42,6 @@ export const SinglePostTemplate = ({
       </Link>
       <div className="SinglePost--Content relative">
         <div className="SinglePost--Meta">
-          {!!categories.length &&
-            categories.map(obj => (
-              <span key={obj.category} className="SinglePost--Meta--Category">
-                {obj.category}
-              </span>
-            ))}
           {date && (
             <time
               className="SinglePost--Meta--Date"
@@ -56,6 +50,18 @@ export const SinglePostTemplate = ({
             >
               {_format(date, 'MMMM Do, YYYY')}
             </time>
+          )}
+          {categories && (
+            <Fragment>
+              <span>|</span>
+              {categories.map((cat, index) => (
+                <span key={cat.category} className="SinglePost--Meta--Category">
+                  {cat.category}
+                  {/* Add a comma on all but last category */}
+                  {index !== categories.length - 1 ? ',' : ''}
+                </span>
+              ))}
+            </Fragment>
           )}
         </div>
 
@@ -123,6 +129,9 @@ export const pageQuery = graphql`
         template
         subtitle
         date
+        categories {
+          category
+        }
         featuredImage {
           ...FluidImage
         }
