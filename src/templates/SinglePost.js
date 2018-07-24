@@ -94,15 +94,15 @@ export const SinglePostTemplate = ({
 
 // Export Default SinglePost for front-end
 const SinglePost = ({ data, pathContext }) => {
-  const { post } = data
-  const { previous, next } = pathContext
+  const { post, allPosts } = data
+  const thisEdge = allPosts.edges.find(edge => edge.node.id === post.id)
   return (
     <SinglePostTemplate
       {...post}
       {...post.frontmatter}
       body={post.html}
-      nextPostURL={_get(next, 'fields.slug')}
-      prevPostURL={_get(previous, 'fields.slug')}
+      nextPostURL={_get(thisEdge, 'next.fields.slug')}
+      prevPostURL={_get(thisEdge, 'previous.fields.slug')}
     />
   )
 }
@@ -117,6 +117,7 @@ export const pageQuery = graphql`
   query SinglePost($id: String!) {
     post: markdownRemark(id: { eq: $id }) {
       html
+      id
       frontmatter {
         title
         template
@@ -124,6 +125,33 @@ export const pageQuery = graphql`
         date
         featuredImage {
           ...FluidImage
+        }
+      }
+    }
+
+    allPosts: allMarkdownRemark(
+      filter: { fields: { contentType: { eq: "posts" } } }
+      sort: { order: DESC, fields: [frontmatter___date] }
+    ) {
+      edges {
+        node {
+          id
+        }
+        next {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
+        }
+        previous {
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+          }
         }
       }
     }

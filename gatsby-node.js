@@ -45,12 +45,6 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
       pagesToCreate.forEach((page, index) => {
         const id = page.node.id
-        const previous =
-          index === pagesToCreate.length - 1
-            ? null
-            : pagesToCreate[index + 1].node
-        const next = index === 0 ? null : pagesToCreate[index - 1].node
-
         createPage({
           // page slug set in md frontmatter
           path: page.node.fields.slug,
@@ -59,9 +53,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
           ),
           // additional data can be passed via context
           context: {
-            id,
-            previous,
-            next
+            id
           }
         })
       })
