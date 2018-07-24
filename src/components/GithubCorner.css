@@ -7,8 +7,6 @@
 .GithubCorner svg {
   color: #fff;
   border: 0;
-  width: 12vmin;
-  height: 12vmin;
   max-width: 6rem;
   max-height: 6rem;
 }
@@ -21,7 +19,13 @@
   animation: octocat-wave 560ms ease-in-out;
 }
 
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+  .GithubCorner {
+    position: absolute;
+    top: 6rem;
+    z-index: 1;
+  }
+
   .GithubCorner:hover .octo-arm {
     animation: none;
   }
