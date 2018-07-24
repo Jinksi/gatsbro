@@ -25,3 +25,12 @@
 .PageHeader .container {
   animation: fadeIn 0.5s ease-out;
 }
+
+@media (max-width: 600px) {
+  .PageHeader {
+    padding: 7rem 0;
+  }
+  .PageHeader-large {
+    padding: 12.5rem 0;
+  }
+}
