@@ -39,14 +39,16 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "start": "npm run develop",
+    "start": "npm run clean && npm run develop",
     "build": "gatsby build",
     "develop": "gatsby develop",
+    "clean": "del .cache",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
+    "del-cli": "^1.1.0",
     "prettier": "^1.7.4"
   }
 }
