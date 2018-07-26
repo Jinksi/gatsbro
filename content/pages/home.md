@@ -2,7 +2,7 @@
 template: HomePage
 slug: ''
 title: Hello World!
-featuredImage: /images/uploads/teddy-kelley-106391.jpg
+featuredImage: /images/uploads/colour.jpg
 subtitle: This is the home page subtitle test
 meta:
   title: ''
