@@ -75,7 +75,7 @@ exports.onCreateNode = ({ node, boundActionCreators, getNode }) => {
     const parsedFilePath = path.parse(fileNode.relativePath)
 
     if (_.get(node, 'frontmatter.slug')) {
-      slug = `/${node.frontmatter.slug}/`
+      slug = `/${node.frontmatter.slug.toLowerCase()}/`
     } else if (
       // home page gets root slug
       parsedFilePath.name === 'home' &&
