@@ -1,64 +1,61 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import Link from 'gatsby-link'
 import { Menu, X } from 'react-feather'
 
 import Logo from './Logo'
 import './Nav.css'
 
-export default class Nav extends Component {
-  state = {
-    active: false
-  }
+const Nav = ({ siteTitle }) => {
+  const [active, setActive] = useState(false)
 
-  handleMenuToggle = () => this.setState({ active: !this.state.active })
+  const handleMenuToggle = () => setActive(!active)
 
   // Only close nav if it is open
-  handleLinkClick = () => this.state.active && this.handleMenuToggle()
+  const handleLinkClick = () => active && handleMenuToggle()
 
-  render() {
-    const { active } = this.state
+  const NavLink = ({ className, children, ...props }) => (
+    <Link
+      {...props}
+      className={`NavLink ${className || ''}`}
+      onClick={handleLinkClick}
+    >
+      {children}
+    </Link>
+  )
 
-    const NavLink = ({ className, children, ...props }) => (
-      <Link
-        {...props}
-        className={`NavLink ${className || ''}`}
-        onClick={this.handleLinkClick}
-      >
-        {children}
-      </Link>
-    )
-
-    return (
-      <nav className={`Nav ${active ? 'Nav-active' : ''}`}>
-        <div className="Nav--Container container">
-          <Link to="/" onClick={this.handleLinkClick}>
-            <Logo />
-          </Link>
-          <div className="Nav--Links">
-            <NavLink to="/" exact>
-              Home
-            </NavLink>
-            <NavLink to="/about/" exact>
-              About
-            </NavLink>
-            <NavLink to="/blog/" exact>
-              Blog
-            </NavLink>
-            <NavLink to="/default/" exact>
-              Default
-            </NavLink>
-            <NavLink to="/contact/" exact>
-              Contact
-            </NavLink>
-          </div>
-          <button
-            className="Button-blank Nav--MenuButton"
-            onClick={this.handleMenuToggle}
-          >
-            {active ? <X /> : <Menu />}
-          </button>
+  return (
+    <nav className={`Nav ${active ? 'Nav-active' : ''}`}>
+      <div className="Nav--Container container">
+        <Link to="/" onClick={handleLinkClick} title={siteTitle}>
+          <Logo />
+        </Link>
+        <div className="Nav--Links">
+          <NavLink to="/" exact>
+            Home
+          </NavLink>
+          <NavLink to="/about/" exact>
+            About
+          </NavLink>
+          <NavLink to="/blog/" exact>
+            Blog
+          </NavLink>
+          <NavLink to="/default/" exact>
+            Default
+          </NavLink>
+          <NavLink to="/contact/" exact>
+            Contact
+          </NavLink>
         </div>
-      </nav>
-    )
-  }
+        <button
+          className="Button-blank Nav--MenuButton"
+          aria-label="Toggle navigation menu button"
+          onClick={handleMenuToggle}
+        >
+          {active ? <X /> : <Menu />}
+        </button>
+      </div>
+    </nav>
+  )
 }
+
+export default Nav
