@@ -1,7 +1,7 @@
 siteTitle: Gatsbro
 siteUrl: 'https://gatsbro.netlify.com'
 siteDescription: >-
-  A starter project for creating lightning-fast websites with Gatsby Netlify CMS.
+  A starter project for creating lightning-fast websites with Gatsby and Netlify CMS.
 socialMediaCard:
   image: /images/uploads/card-og.png
 headerScripts: |-

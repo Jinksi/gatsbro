@@ -10,11 +10,18 @@ import Footer from '../components/Footer'
 import GithubCorner from '../components/GithubCorner'
 
 export default ({ children, data }) => {
-  const { siteTitle, siteUrl, socialMediaCard, headerScripts } =
+  const {
+    siteTitle,
+    siteUrl,
+    socialMediaCard,
+    headerScripts,
+    siteDescription
+  } =
     data.settingsYaml || {}
   return (
     <Fragment>
       <Helmet defaultTitle={siteTitle} titleTemplate={`%s | ${siteTitle}`}>
+        <html lang="en" />
         {/* Add font link tags here */}
       </Helmet>
 
@@ -25,11 +32,12 @@ export default ({ children, data }) => {
           socialMediaCard.image &&
           siteUrl + socialMediaCard.image
         }
+        description={siteDescription}
       />
 
       <GithubCorner url="https://github.com/Jinksi/gatsbro" />
 
-      <Nav />
+      <Nav siteTitle={siteTitle} />
 
       <Fragment>{children()}</Fragment>
 
