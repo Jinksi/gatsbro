@@ -1,7 +1,8 @@
 # Gatsbro
 
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![dependencies](https://david-dm.org/jinksi/netlify-cms-react-starter.svg?style=flat-square)](https://david-dm.org/jinksi/gatsbro)
+[![dependencies](https://david-dm.org/jinksi/gatsbro.svg?style=flat-square)](https://david-dm.org/jinksi/gatsbro)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/67a7cc90-239b-43ff-806f-26adcaecb4cd/deploy-status)](https://app.netlify.com/sites/gatsbro/deploys)
 
 An opinionated starter project for creating lightning-fast websites with [Gatsby](https://gatsbyjs.org) and [Netlify CMS](https://netlifycms.org).
 
